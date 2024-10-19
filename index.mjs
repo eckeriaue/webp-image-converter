@@ -9,20 +9,20 @@ app.register(import('@fastify/multipart'))
 
 app.post('/convert', async function(request, reply) {
   reply.header('Content-Type', 'multipart/form-data')
-  const files = [];
-  for await (const file of request.files()) {
-    const fileBuffer = await new Promise((resolve, reject) => {
-      const chunks = [];
-      file.file.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
-      file.file.on('end', () => resolve(Buffer.concat(chunks)));
-      file.file.on('error', reject);
-    });
+  const files = []
+  for await (const { file, filename, mimetype } of request.files()) {
+    const content = await new Promise((resolve, reject) => {
+      const chunks = []
+      file.on('data', (chunk) => chunks.push(Buffer.from(chunk)))
+      file.once('end', () => resolve(Buffer.concat(chunks)))
+      file.once('error', reject)
+    })
 
     files.push({
-      filename: file.filename,
-      content: fileBuffer,
-      mimetype: file.mimetype,
-    });
+      filename,
+      content,
+      mimetype,
+    })
   }
   return sharp(files.at(0).content).webp().toBuffer()
 })
