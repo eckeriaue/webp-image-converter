@@ -1,4 +1,3 @@
-// Import the framework and instantiate it
 import Fastify from 'fastify'
 import { env } from 'node:process'
 
