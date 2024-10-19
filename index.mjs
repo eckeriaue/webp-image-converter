@@ -61,7 +61,13 @@ app.get('/', async function  (request, reply) {
           console.error('Файл не был загружен')
         })
 
-        previewOutput.src = URL.createObjectURL(new File([requestBlob], 'output.webp', { type: 'image/webp' }))
+        previewOutput.src = URL.createObjectURL(
+          new File(
+            [requestBlob],
+            'output.webp',
+            { type: 'image/webp' }
+          )
+        )
       })
     </script>
   </div>`
