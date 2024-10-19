@@ -4,9 +4,11 @@ const app = Fastify({
   logger: true
 })
 
+app.register(import('@fastify/multipart'))
+
 app.post('/convert', async function(request, reply) {
   reply.header('Content-Type', 'multipart/form-data')
-  console.info(request.body)
+  console.info(request.file)
   // const { default: sharp } = await import('sharp')
   
 })
