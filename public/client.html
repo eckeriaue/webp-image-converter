@@ -4,29 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
   <div>
-    <form name="sendForm" style="display: flex">
-      <input name="targetFileInput" type="file">
-      <button type="submit"> convert </button>
-      <img id="previewInput" style="width: 400px" />
-      <img id="previewOutput" style="width: 400px" />
-    </form>
-    <script>
-
-      document.forms.sendForm.targetFileInput.addEventListener('input', function(event) {
-        const [file] = event.target.files
-        if (previewInput.src) {
-          URL.revokeObjectURL(previewInput.src)
-        }
-        previewInput.src = URL.createObjectURL(file)
-      })
-
-      document.forms.sendForm.addEventListener('submit', async function(event) {
-        event.preventDefault()
-        const [file] = event.target.targetFileInput.files
-        const fd = new FormData(event.target)
+    <form
+      x-data
+      name="sendForm"
+      style="display: flex"
+      @submit.prevent="
+        const [file] = $refs.targetFileInput.files
+        const fd = new FormData($event.target)
         fd.append('targetFile', file)
         const requestBlob = await fetch('/convert', {
           method: 'POST',
@@ -36,16 +24,25 @@
         .catch(e => {
           console.error('Файл не был загружен')
         })
-
-        previewOutput.src = URL.createObjectURL(
+        
+        $refs.previewOutput.src = URL.createObjectURL(
           new File(
             [requestBlob],
             'output.webp',
             { type: 'image/webp' }
           )
         )
-      })
-    </script>
+      "
+    >
+      <input
+        x-ref="targetFileInput"
+        type="file"
+        @input="$refs.previewInput.src = URL.createObjectURL($event.target.files[0])"
+      >
+      <button type="submit"> convert </button>
+      <img x-ref="previewInput" style="width: 400px" />
+      <img x-ref="previewOutput" style="width: 400px" />
+    </form>
   </div>
 </body>
 </html>
