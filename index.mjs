@@ -1,5 +1,4 @@
 import Fastify from 'fastify'
-import { join, resolve } from 'node:path'
 import { env } from 'node:process'
 import { fileURLToPath } from 'node:url'
 
