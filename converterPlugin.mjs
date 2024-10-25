@@ -32,8 +32,5 @@ export default function any2webpConverterPlugin(app, { endpoint = '/convert' } =
     return sharp(files.at(0).content).webp().toBuffer()
   })
 
-  .get('/', function (request, reply) {
-    reply.sendFile('client.html')
-  })
   done()
 }
