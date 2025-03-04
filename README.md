@@ -14,9 +14,9 @@ A high-performance image conversion service that transforms images to modern Web
 ## 📚 API Endpoints
 
 ### 🔄 Convert Image to WebP
-**POST** `/api/convert`
+**POST** `/convert`
 ```bash
-curl -X POST -F "image=@input.jpg" http://localhost:3000/api/convert
+curl -X POST -F "image=@input.jpg" http://localhost:3000/convert
 ```
 ### 🛠️ Getting Started
 Prerequisites
