@@ -1,4 +1,4 @@
-# 🌄 WebP Image Converter API
+# 🌄 Fastify WebP Image Converter API and Plugin
 
 A high-performance image conversion service that transforms images to modern WebP format. Perfect for optimizing web assets!
 
