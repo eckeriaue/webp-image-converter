@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import { env } from 'node:process'
 import { fileURLToPath } from 'node:url'
+import { readFile } from 'node:fs/promises'
 
 const port = parseInt(env.PORT || '3001')
 const host = env.HOST || '127.0.0.1'
@@ -15,6 +16,10 @@ app
   root: fileURLToPath(new URL('./public', import.meta.url)),
 })
 .register(import('./plugin.mjs'))
+.get('/', function(req, res) {
+  res.header('content-type', 'text/html')
+  return readFile('./public/client.html', 'utf-8')
+})
 .listen({ port, host })
 .then(() => {
   console.info(

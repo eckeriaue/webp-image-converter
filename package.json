@@ -4,6 +4,7 @@
     "prod": "node --env-file=.env index.mjs"
   },
   "type": "module",
+  "main": "./plugin.mjs",
   "dependencies": {
     "@fastify/multipart": "^9.0.1",
     "@fastify/static": "^8.0.2",
