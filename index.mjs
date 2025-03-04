@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { readFile } from 'node:fs/promises'
 
 const port = parseInt(env.PORT || '3001')
-const host = env.HOST || '127.0.0.1'
+const host = env.HOST || '0.0.0.0'
 
 const app = Fastify({
   logger: (env.LOGGER || 'true') === 'true',

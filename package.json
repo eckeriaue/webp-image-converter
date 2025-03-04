@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "dev": "node --watch --env-file=.env index.mjs",
-    "prod": "node --env-file=.env index.mjs"
+    "dev:env": "node --watch --env-file=.env index.mjs",
+    "prod:env": "node --env-file=.env index.mjs",
+    "prod": "node index.mjs"
   },
   "type": "module",
   "main": "./plugin.mjs",
