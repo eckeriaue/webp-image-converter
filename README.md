@@ -17,16 +17,16 @@ A high-performance image conversion service that transforms images to modern Web
 ### 🔄 Convert Image to WebP
 **POST** `/api/convert`
 ```bash
-curl -X POST -F "image=@input.jpg" http://localhost:3000/api/convert;
-
-🛠️ Getting Started
+curl -X POST -F "image=@input.jpg" http://localhost:3000/api/converts
+```
+### 🛠️ Getting Started
 Prerequisites
 
     Node.js 18+
 
     Docker 20.10+ (optional)
 
-Local Installation
+### Local Installation
 ```bash
 git clone https://github.com/eckeriaue/webp-image-converter.git
 cd webp-image-converter
@@ -35,13 +35,13 @@ cp .env.example .env
 npm start
 ```
 
-Docker Setup
+### Docker Setup
 ```bash
 docker build -t webp-converter .
 docker run -p 3000:3000 -d webp-converter
 ```
 
-Configuration (.env)
+### Configuration (.env)
 ```ini
 HOST=0.0.0.0
 PORT=3000
@@ -49,7 +49,7 @@ MAX_FILE_SIZE=5MB
 DEFAULT_QUALITY=85
 ```
 
-🤝 Contributing
+### 🤝 Contributing
 
     Fork the repository
 
