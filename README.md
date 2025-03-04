@@ -3,7 +3,6 @@
 A high-performance image conversion service that transforms images to modern WebP format. Perfect for optimizing web assets!
 
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
-[![Docker Image](https://img.shields.io/docker/v/yourusername/webp-converter/latest)](https://hub.docker.com/r/yourusername/webp-converter)
 
 ## 🚀 Features
 - Convert multiple image formats to WebP
